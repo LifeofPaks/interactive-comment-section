@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+@import 'animate.css';
+
+//  PRIMARY
+ $Moderate-blue: hsl(238, 40%, 52%);
+ $Soft-Red: hsl(358, 79%, 66%);
+ $Light-grayish-blue: hsl(239, 57%, 85%);
+ $Pale-red: hsl(357, 100%, 86%);
+
+
+//  NATURAL
+$Dark-blue: hsl(212, 24%, 26%);
+$Grayish-Blue: hsl(211, 10%, 45%);
+$Light-gray: hsl(223, 19%, 93%);
+$Very-light-gray: hsl(228, 33%, 97%);
+$White: hsl(0, 0%, 100%);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Rubik', sans-serif;
+    background:  $Light-gray;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+button, input, textarea{
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+button{
+    cursor: pointer;
+}
+
+.comment{
+    width: 600px;
+    display: flex;
+    gap: 1rem;
+    background: $White;
+    padding: 1rem;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+
+
+    .rankWrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .5rem;
+        background:  $Light-gray;
+        height: fit-content;
+        padding-block: 0.5rem;
+        border-radius: .5rem;
+        padding-inline: .7rem;
+
+        button{
+            font-weight: bold;
+            color: $Grayish-Blue;
+            transition: .3s;
+
+            &:hover{
+                color: $Moderate-blue;
+            }
+        }
+
+        span{
+            color: $Moderate-blue;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+
+    .top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: .5rem;
+
+        .profile{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            img{
+                width: 30px;
+            }
+
+            .name{
+                font-size: 14px;
+                font-weight: 500;
+                color: $Dark-blue;
+
+                .currentUser{
+                    color: $White;
+                    background: $Moderate-blue;
+                    margin-left: .3rem;
+                    font-weight: normal;
+                    font-size: 12px;
+                    padding: .1rem .2rem;
+
+                }
+            }
+
+            .createdAt{
+                color: $Grayish-Blue;
+                font-size: 14px;
+                margin-right: 3rem;
+            }
+        }
+
+        .actions{
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+
+            .action{
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+                cursor: pointer;
+                transition: .3s;
+
+                &:hover{
+                    opacity: .5;
+                }
+
+                img{
+                    width: 14px;
+                }
+
+                span{
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: $Moderate-blue;
+
+                    &.delete{
+                        color: rgb(238, 5, 5);
+                    }
+                }
+            }
+        }
+
+        .replyWrapper{
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            cursor: pointer;
+            transition: .3s;
+
+            &:hover{
+                opacity: .5;
+            }
+
+            span{
+                font-weight: 500;
+                font-size: 14px;
+                color: $Moderate-blue;
+            }
+        }
+    }
+
+    .bottom{
+        p{
+            font-size: 14px;
+            line-height: 20px;
+            color: $Grayish-Blue;
+        }
+    }
+
+}
+
+.myComment{
+    width: 600px;
+    display: flex;
+    gap: 1rem;
+    background: $White;
+    padding: 1rem;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+
+    img{
+        width: 30px;
+    }
+
+    textarea{
+        border: .5px solid $Light-grayish-blue;
+        width: 100%;
+        padding: .5rem 1rem;
+        height: 100px;
+        resize: none;
+        border-radius: .5rem;
+        font-family: Arial, Helvetica, sans-serif;
+        transition: .3s;
+
+        &:hover, &:focus{
+            border-color: $Moderate-blue;
+        }
+
+        &::placeholder{
+            font-family: inherit;
+        }
+    }
+
+    button{
+        color: $White;
+        background: $Moderate-blue;
+        padding: .5rem 1rem;
+        border-radius: .5rem;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 600;
+        transition: .3s;
+
+        &:hover{
+            opacity: .7;
+        }
+    }
+}
+
+.replies{
+    border-left: .5px solid $Light-grayish-blue;
+    margin-left: 3rem;
+    .comment{
+        width: 500px;
+        margin-left: 9%;
+
+        .bottom{
+            p{
+                span{
+                    color: $Moderate-blue;
+                    font-weight: 600;
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+
+.myReply{
+    width: 500px;
+    margin-left: 9%;
+    transition: .3s;
+}
+
+.editReply{
+
+    textarea{
+        border: .5px solid $Light-grayish-blue;
+        width: 100%;
+        padding: .5rem 1rem;
+        height: 100px;
+        resize: none;
+        border-radius: .5rem;
+        font-family: Arial, Helvetica, sans-serif;
+        transition: .3s;
+
+        &:hover, &:focus{
+            border-color: $Moderate-blue;
+        }
+
+        &::placeholder{
+            font-family: inherit;
+        }
+    }
+
+
+    button{
+        color: $White;
+        background: $Moderate-blue;
+        padding: .5rem 1rem;
+        border-radius: .5rem;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 600;
+        transition: .3s;
+        margin-left: 80%;
+        margin-top: .7rem;
+
+        &:hover{
+            opacity: .7;
+        }
+    }
+}
+
