@@ -11,6 +11,9 @@ function App() {
   const [replies, setReplies] = useState([]);
   const [replyComment, setReplyComment] = useState(false);
   const [edit, setEdit] = useState(false)
+  const [deleteComment, setDeleteComment] = useState(false)
+  const [editReplyContent, setEditReplyContent] = useState('')
+
 
   useEffect(() => {
     setComments(commentsData);
@@ -59,7 +62,7 @@ function App() {
   const handleReReply = (id) => {
     setReplies((items) =>
       items?.map((item) =>
-        item.id === id ? { ...item, replyThis: true } : item
+        item.id === id ? { ...item, replyThis: true} : item
       )
     );
   };
@@ -68,11 +71,20 @@ function App() {
     setReplies((items) => items?.filter((item) => item.id !== id));
   };
 
+  const checkDelete = () =>{
+    setDeleteComment(true)
+  }
+
+  const cancelDelete =() =>{
+    setDeleteComment(false)
+  }
+
   const handleEdit = (id) =>{
     setEdit(true)
     setReplies((items) =>
     items?.map((item) =>
       item.id === id ? { ...item, editThis: true } : item
+    
     )
   );
 
@@ -97,6 +109,12 @@ function App() {
         deleteMyReply={deleteMyReply}
         handleEdit={handleEdit}
         edit={edit}
+        editReplyContent={editReplyContent}
+        setEditReplyContent={setEditReplyContent}
+        deleteComment={deleteComment}
+        checkDelete={checkDelete}
+        setDeleteComment={setDeleteComment}
+        cancelDelete={cancelDelete}
       />
       <Comment />
     </div>

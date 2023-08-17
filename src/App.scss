@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 @import 'animate.css';
+@import '../src/Styles/Responsive.scss';
+
 
 //  PRIMARY
  $Moderate-blue: hsl(238, 40%, 52%);
@@ -54,6 +56,46 @@ button{
     border-radius: .5rem;
     margin-bottom: 1rem;
 
+    @include mobile{
+        width: 320px;
+    }
+    
+
+    .mobileAction{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1rem;
+        display: none;
+
+        @include mobile{
+            display: flex;
+        }
+        
+
+        .rankWrapper {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 80px;
+        }
+
+        .replyWrapper{
+            display: flex;
+            gap: .3rem;
+            align-items: center;
+
+            span{
+                color: $Moderate-blue;
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+            img{
+                width: 14px;
+            }
+        }
+    }
+
 
     .rankWrapper{
         display: flex;
@@ -65,6 +107,16 @@ button{
         padding-block: 0.5rem;
         border-radius: .5rem;
         padding-inline: .7rem;
+
+        &.desktop{
+
+            @include mobile{
+                display: none;
+            }
+        }
+
+      
+        
 
         button{
             font-weight: bold;
@@ -118,6 +170,11 @@ button{
                 color: $Grayish-Blue;
                 font-size: 14px;
                 margin-right: 3rem;
+
+                @include mobile{
+                    margin-right: 0;
+                }
+                
             }
         }
 
@@ -125,6 +182,11 @@ button{
             display: flex;
             align-items: center;
             gap: 1.5rem;
+
+            @include mobile{
+                display: none;
+            }
+            
 
             .action{
                 display: flex;
@@ -160,6 +222,11 @@ button{
             cursor: pointer;
             transition: .3s;
 
+            @include mobile{
+                display: none;
+            }
+            
+
             &:hover{
                 opacity: .5;
             }
@@ -192,8 +259,39 @@ button{
     margin-bottom: 1rem;
     align-items: flex-start;
 
+
+    @include mobile{
+        flex-direction: column;
+    }
+
+    .mobileLayout{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        display: none;
+
+        @include mobile{
+            display: flex;
+        }
+        
+    }
+
+    @include mobile{
+        width: 320px;
+    }
+    
+
     img{
         width: 30px;
+
+        &.dImg{
+            @include mobile{
+                display: none;
+            }
+        }
+
+       
     }
 
     textarea{
@@ -228,15 +326,85 @@ button{
         &:hover{
             opacity: .7;
         }
+
+        &.dBtn{
+            @include mobile{
+                display: none;
+            }
+        }
+
+       
     }
 }
 
 .replies{
     border-left: .5px solid $Light-grayish-blue;
     margin-left: 3rem;
+
+    @include mobile{
+        margin-left: 0;
+    }
+    
+
+    .mobileAction{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1rem;
+        display: none;
+
+        @include mobile{
+            display: flex;
+        }
+        
+        .rankWrapper {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 80px;
+        }
+
+        .actions{
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+
+            .action{
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+                cursor: pointer;
+                transition: .3s;
+
+                &:hover{
+                    opacity: .5;
+                }
+
+                img{
+                    width: 14px;
+                }
+
+                span{
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: $Moderate-blue;
+
+                    &.delete{
+                        color: rgb(238, 5, 5);
+                    }
+                }
+            }
+        }
+    }
+
     .comment{
         width: 500px;
         margin-left: 9%;
+
+        @include mobile{
+            width: 300px;
+            margin-left: 1rem;
+        }
+        
 
         .bottom{
             p{
@@ -255,6 +423,12 @@ button{
     width: 500px;
     margin-left: 9%;
     transition: .3s;
+
+    @include mobile{
+        width: 300px;
+        margin-left: 0;
+    }
+
 }
 
 .editReply{
@@ -291,8 +465,70 @@ button{
         margin-left: 80%;
         margin-top: .7rem;
 
+        @include mobile{
+            margin-left: 0;
+        }
+
         &:hover{
             opacity: .7;
+        }
+    }
+}
+
+.modal{
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #000000b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .content{
+        width: 300px;
+        background: $White;
+        padding: 2rem 1rem;
+        border-radius: .5rem;
+
+        h1{
+            font-size: 20px;
+            margin-bottom: 1rem;
+            color: $Dark-blue;
+        }
+
+        p{
+            font-size: 14px;
+            color: $Dark-blue;
+            margin-bottom: 1rem;
+            line-height: 20px;
+        }
+
+        .buttonWrapper{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            button{
+                width: 100%;
+                padding-block: .8rem;
+                text-transform: uppercase;
+                font-size: 12px;
+                color: $White;
+                border-radius: 0.5rem;
+
+                &.no{
+                    background: $Dark-blue;
+                }
+
+                &.yes{
+                    background: $Soft-Red;
+                }
+            }
         }
     }
 }
